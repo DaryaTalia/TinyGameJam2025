@@ -1,6 +1,9 @@
+using System;
+using System.Collections;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.Rendering;
+using static EventManager;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,11 +16,14 @@ public class GameManager : MonoBehaviour
     (float Current, float Max, float Decay) attention = (0.0f, 5.0f, 0.3f);
     (float Current, float Max, float Speed) cycle = (0.0f, 5.0f, 0.4f);
 
-    EventManager.OnEarnMoney onEarnMoney;
-    EventManager.OnLoseMoney onLoseMoney;
-    EventManager.OnCycleComplete onCycleComplete;
-    EventManager.OnAttentionTooHigh onAttentionTooHigh;
-    EventManager.OnLevelUp onLevelUp;
+    OnEarnMoney onEarnMoney;
+    OnLoseMoney onLoseMoney;
+    OnCycleComplete onCycleComplete;
+    OnAttentionTooHigh onAttentionTooHigh;
+    OnLevelUp onLevelUp;
+
+    GameObject hackSuccessUI;
+    GameObject hackFailUI;
 
     #endregion
 
@@ -61,6 +67,75 @@ public class GameManager : MonoBehaviour
 
         return false;
     }
+
+    public void StartHackSuccess()
+    {
+        StartCoroutine(DisplayHackSuccessUI());
+    }
+
+    IEnumerator DisplayHackSuccessUI()
+    {
+        hackSuccessUI.SetActive(true);
+
+        float time = 0;
+        float duration = 2;
+
+        while(time < duration)
+        {
+            hackSuccessUI.GetComponent<CanvasGroup>().alpha = Mathf.Lerp(0, 1, duration);
+
+            time += Time.deltaTime;
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(5);
+
+        while (time > 0)
+        {
+            hackSuccessUI.GetComponent<CanvasGroup>().alpha = Mathf.Lerp(1, 0, duration);
+
+            time -= Time.deltaTime;
+            yield return null;
+        }
+
+        hackSuccessUI.SetActive(false);
+    }
+
+
+
+    public void StartHackFail()
+    {
+        StartCoroutine(DisplayHackFailUI());
+    }
+
+    IEnumerator DisplayHackFailUI()
+    {
+        hackFailUI.SetActive(true);
+
+        float time = 0;
+        float duration = 2;
+
+        while (time < duration)
+        {
+            hackFailUI.GetComponent<CanvasGroup>().alpha = Mathf.Lerp(0, 1, duration);
+
+            time += Time.deltaTime;
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(5);
+
+        while (time > 0)
+        {
+            hackFailUI.GetComponent<CanvasGroup>().alpha = Mathf.Lerp(1, 0, duration);
+
+            time -= Time.deltaTime;
+            yield return null;
+        }
+
+        hackFailUI.SetActive(false);
+    }
+
 
     void IncrementMoney()
     {
