@@ -988,7 +988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282c816ca99dfe34bb7accc4dde6b1af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CodeWheelHandler
-  specialKey: {fileID: 0}
+  specialKey: {fileID: 5327889086818011588}
 --- !u!1 &824609703426180074
 GameObject:
   m_ObjectHideFlags: 0
@@ -1913,7 +1913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282c816ca99dfe34bb7accc4dde6b1af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CodeWheelHandler
-  specialKey: {fileID: 0}
+  specialKey: {fileID: 5088260377067590283}
 --- !u!1 &1760908695858626842
 GameObject:
   m_ObjectHideFlags: 0
@@ -2646,7 +2646,6 @@ GameObject:
   - component: {fileID: 5729397348341945637}
   - component: {fileID: 39897564825492819}
   - component: {fileID: 7660030506869723384}
-  - component: {fileID: 5625039816117112311}
   m_Layer: 5
   m_Name: LockWheelPanel
   m_TagString: Untagged
@@ -2742,19 +2741,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &5625039816117112311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3255641715673348420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 282c816ca99dfe34bb7accc4dde6b1af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CodeWheelHandler
-  specialKey: {fileID: 0}
 --- !u!1 &3499554800892300126
 GameObject:
   m_ObjectHideFlags: 0
@@ -2911,7 +2897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282c816ca99dfe34bb7accc4dde6b1af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CodeWheelHandler
-  specialKey: {fileID: 0}
+  specialKey: {fileID: 6143387234161495171}
 --- !u!1 &3548894998697201567
 GameObject:
   m_ObjectHideFlags: 0
@@ -3800,7 +3786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282c816ca99dfe34bb7accc4dde6b1af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CodeWheelHandler
-  specialKey: {fileID: 0}
+  specialKey: {fileID: 4702379743863333818}
 --- !u!1 &4702379743863333818
 GameObject:
   m_ObjectHideFlags: 0
@@ -6133,7 +6119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282c816ca99dfe34bb7accc4dde6b1af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CodeWheelHandler
-  specialKey: {fileID: 0}
+  specialKey: {fileID: 6703651409113365496}
 --- !u!1 &8262814152902219272
 GameObject:
   m_ObjectHideFlags: 0

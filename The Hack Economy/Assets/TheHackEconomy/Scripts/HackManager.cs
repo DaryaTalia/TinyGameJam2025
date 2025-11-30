@@ -26,6 +26,7 @@ public class HackManager : MonoBehaviour
         1.0f, 
         false);
 
+    [SerializeField]
     CodeWheelHandler CodeWheel1, CodeWheel2, CodeWheel3, CodeWheel4, CodeWheel5;
 
     public void StartHacking()
