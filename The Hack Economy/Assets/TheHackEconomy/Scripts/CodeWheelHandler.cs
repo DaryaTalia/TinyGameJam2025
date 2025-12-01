@@ -1,21 +1,24 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class CodeWheelHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    [SerializeField]
     GameObject key1, key2, key4, key5;
     public GameObject specialKey;
     int key1Pos, key2Pos, specialKeyPos, key4Pos, key5Pos;
 
     string correctKey = "";
-    (float Speed, float Position) wheelSpeed = (0.6f, 0.0f);
+    (float Speed, float Position) wheelSpeed = (1.0f, 0.0f);
 
     bool hoverActive;
+    bool verified;
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (hoverActive)
+        if (hoverActive && !verified)
         {
             if (wheelSpeed.Position >= wheelSpeed.Speed) 
             {
@@ -37,6 +40,8 @@ public class CodeWheelHandler : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public void InitializeCodeWheel(string myKey)
     {
         ResetCorrectKey();
+
+        verified = false;
 
         key1Pos = Random.Range(0, HackManager.codeKeys.Length);
 
@@ -70,15 +75,17 @@ public class CodeWheelHandler : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public void SetCorrectKey(string key)
     {
         correctKey = key;
+
+        specialKey.GetComponent<Image>().color = new Color(0.454902f, 0.9411765f, 0.3176471f);
     }
 
-    public bool VerifyCorrectKey()
+    public void VerifyCorrectKey()
     {
-        if(specialKey.GetComponentInChildren<TextMeshProUGUI>().text == correctKey)
+        if(hoverActive && !verified && specialKey.GetComponentInChildren<TextMeshProUGUI>().text == correctKey)
         {
-            return true;
+            verified = true;
+            return;
         }
-        return false;
     }
 
     public void OnPointerEnter(PointerEventData eventData) 
@@ -89,5 +96,7 @@ public class CodeWheelHandler : MonoBehaviour, IPointerEnterHandler, IPointerExi
     { 
         hoverActive = false;
     }
+
+
 
 }

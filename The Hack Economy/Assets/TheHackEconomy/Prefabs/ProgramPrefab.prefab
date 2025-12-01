@@ -790,7 +790,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2389477953365305812}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: HackManager, Assembly-CSharp
+        m_MethodName: StartHacking
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1400902454405088619}
+        m_TargetAssemblyTypeName: HackProgram, Assembly-CSharp
+        m_MethodName: SubscribeToHacking
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5620290546157975689
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,7 +934,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4791052933810615853}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1400902454405088619}
+        m_TargetAssemblyTypeName: HackProgram, Assembly-CSharp
+        m_MethodName: UpgradeInstanceLimit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5707547503441136719
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,6 +1115,8 @@ GameObject:
   - component: {fileID: 8473474955486954469}
   - component: {fileID: 4516518399933906955}
   - component: {fileID: 7668499759892671077}
+  - component: {fileID: 7290233635446696875}
+  - component: {fileID: 1400902454405088619}
   m_Layer: 5
   m_Name: ProgramPrefab
   m_TagString: Untagged
@@ -1141,6 +1179,44 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
+--- !u!225 &7290233635446696875
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5869923679277534083}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &1400902454405088619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5869923679277534083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b8ccf6aef84bc8479baba72203bf411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HackProgram
+  programName: 
+  minSkill: 0
+  attention: 0
+  cycleReward: 0
+  unlocked: 0
+  current: 0
+  max: 0
+  upgradeCost: 0
+  programNameText: {fileID: 1058204058320280711}
+  skillLevelText: {fileID: 1736374794452957410}
+  attentionLevelText: {fileID: 990198343304441943}
+  cycleRewardText: {fileID: 2042943493320395327}
+  newInstanceTrackerText: {fileID: 8490328187313388605}
+  instanceLimitTrackerText: {fileID: 5260724504498463836}
 --- !u!1 &5932103273820949592
 GameObject:
   m_ObjectHideFlags: 0
@@ -1658,7 +1734,7 @@ GameObject:
   - component: {fileID: 5260724504498463836}
   - component: {fileID: 1526531624877104621}
   m_Layer: 5
-  m_Name: UpgradeInstanceLimit
+  m_Name: UpgradeInstanceLimitTracker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

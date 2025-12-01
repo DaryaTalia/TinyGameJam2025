@@ -32,6 +32,7 @@ public class HackManager : MonoBehaviour
     public void StartHacking()
     {
         GenerateNewCode();
+        Debug.Log(nextCode);
 
         CodeWheel1.InitializeCodeWheel(nextCode[0].ToString());
         CodeWheel2.InitializeCodeWheel(nextCode[1].ToString());
