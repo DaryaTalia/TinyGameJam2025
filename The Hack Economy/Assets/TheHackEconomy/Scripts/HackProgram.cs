@@ -1,66 +1,55 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using static EventManager;
 
 public class HackProgram : MonoBehaviour
 {
     #region Fields
     [SerializeField]
-    string programName;
-    [SerializeField]
-    int minSkill;
-    [SerializeField]
-    int attention;
-    [SerializeField]
-    int cycleReward;
-    [SerializeField]
-    bool unlocked;
-    [SerializeField]
-    int current;
-    [SerializeField]
-    int max;
-    [SerializeField]
-    int upgradeCost;
+    HackProgramSO data;
 
     public string ProgramName
     {
-        get { return programName; }
+        get { return data.programName; }
     }
 
     public int MinSkill
     {
-        get { return minSkill; }
+        get { return data.minSkill; }
     }
 
     public int Attention
     {
-        get { return attention; }
+        get { return data.attention; }
     }
 
     public int CycleReward
     {
-        get { return cycleReward; }
+        get { return data.cycleReward; }
     }
 
     public bool Unlocked
     {
-        get { return unlocked; }
-        set { unlocked = value; }
+        get { return data.unlocked; }
+        set { data.unlocked = value; }
     }
 
     public int Current
     {
-        get { return current; }
+        get { return data.current; }
     }
 
     public int Max
     {
-        get { return max; }
+        get { return data.max; }
     }
 
     public int UpgradeCost
     {
-        get { return upgradeCost; }
+        get { return data.upgradeCost; }
     }
 
     OnPatternSuccess onPatternSuccess;
@@ -72,6 +61,11 @@ public class HackProgram : MonoBehaviour
     private void Start()
     {
         InitializeUI();
+    }
+
+    public void SetNextProgram()
+    {
+        HackManager.IHackManager.StartHacking(data.programName);
     }
 
     public void SubscribeToHacking()
@@ -86,10 +80,10 @@ public class HackProgram : MonoBehaviour
 
     public void UpgradeInstanceLimit()
     {
-        if (GameManager.Money >= upgradeCost)
+        if (GameManager.Money >= data.upgradeCost)
         {
-            GameManager.Money -= upgradeCost;
-            max++;
+            GameManager.Money -= data.upgradeCost;
+            data.max++;
 
             UpdateUI();
         }            
@@ -97,7 +91,7 @@ public class HackProgram : MonoBehaviour
 
     void NewInstance()
     {
-        current++;
+        data.current++;
         UnsubscribeFromHacking();
 
         UpdateUI();
@@ -105,8 +99,10 @@ public class HackProgram : MonoBehaviour
 
     public void ReduceInstances()
     {
-        current--;
+        data.current--;
     }
+
+
     #endregion
 
     #region UI
@@ -126,20 +122,19 @@ public class HackProgram : MonoBehaviour
 
     void InitializeUI()
     {
-        programNameText.text = programName;
-        skillLevelText.text = "Skill Level: " + minSkill;
-        attentionLevelText.text = "Attention Level: " + attention;
-        cycleRewardText.text = "$" + cycleReward.ToString("N0") + "/cycle";
+        programNameText.text = data.programName;
+        skillLevelText.text = "Skill Level: " + data.minSkill;
+        attentionLevelText.text = "Attention Level: " + data.attention;
+        cycleRewardText.text = "$" + data.cycleReward.ToString("N0") + "/cycle";
 
         UpdateUI();
     }
 
     public void UpdateUI()
     {
-        newInstanceTrackerText.text = "New Instance (" + current + "/" + max + ")";
-        instanceLimitTrackerText.text = "Upgrade Instance Limit (-$" + upgradeCost + ")";
+        newInstanceTrackerText.text = "New Instance (" + data.current + "/" + data.max + ")";
+        instanceLimitTrackerText.text = "Upgrade Instance Limit (-$" + data.upgradeCost + ")";
     }
-
 
     #endregion
 

@@ -39,7 +39,7 @@ public class ProgramManager : MonoBehaviour
             program.GetComponent<CanvasGroup>().alpha = 0;
             program.GetComponent<CanvasGroup>().interactable = false;
             program.GetComponent<CanvasGroup>().blocksRaycasts = false;
-            program.GetComponent<CanvasGroup>().ignoreParentGroups = false;
+            program.GetComponent<CanvasGroup>().ignoreParentGroups = true;
         }
 
         // Initialize First Program

@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        //PauseGame();
+        UpdateUI();
     }
 
     void Update()

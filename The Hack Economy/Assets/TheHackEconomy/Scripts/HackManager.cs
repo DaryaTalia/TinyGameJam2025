@@ -5,16 +5,17 @@ using static EventManager;
 
 public class HackManager : MonoBehaviour
 {
-    [SerializeField]
-    OnPatternSuccess onPatternSuccess;
+    public static HackManager IHackManager;
 
-    [SerializeField]
+    OnPatternSuccess onPatternSuccess;
     OnPatternFail onPatternFail;
 
     public const string codeKeys = "0123456789ABCDEF";
 
     int codeLength = 5;
     string nextCode;
+
+    string nextProgramName;
 
     (float Current, 
         float Max, 
@@ -29,8 +30,22 @@ public class HackManager : MonoBehaviour
     [SerializeField]
     CodeWheelHandler CodeWheel1, CodeWheel2, CodeWheel3, CodeWheel4, CodeWheel5;
 
-    public void StartHacking()
+    private void Awake()
     {
+        if (IHackManager == null)
+        {
+            IHackManager = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+
+    public void StartHacking(string programName)
+    {
+        nextProgramName = programName;
+
         GenerateNewCode();
         Debug.Log(nextCode);
 
