@@ -39,7 +39,9 @@ public class ProgramManager : MonoBehaviour
             program.GetComponent<CanvasGroup>().alpha = 0;
             program.GetComponent<CanvasGroup>().interactable = false;
             program.GetComponent<CanvasGroup>().blocksRaycasts = false;
-            program.GetComponent<CanvasGroup>().ignoreParentGroups = true;
+            program.GetComponent<CanvasGroup>().ignoreParentGroups = false;
+
+            Debug.Log("Initialized and Disabled: " + program.ProgramName);
         }
 
         // Initialize First Program
@@ -50,5 +52,9 @@ public class ProgramManager : MonoBehaviour
     {
         allPrograms[0].GetComponent<CanvasGroup>().alpha = 1;
         allPrograms[0].GetComponent<CanvasGroup>().interactable = true;
+        allPrograms[0].GetComponent<CanvasGroup>().blocksRaycasts = true;
+        allPrograms[0].GetComponent<CanvasGroup>().ignoreParentGroups = true;
+
+        Debug.Log("Initialized and Enabled: " + p.ProgramName);
     }
 }
